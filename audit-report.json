@@ -1,0 +1,119 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@nestjs/core": {
+      "name": "@nestjs/core",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@nestjs/platform-express"
+      ],
+      "effects": [
+        "@nestjs/platform-express"
+      ],
+      "range": ">=9.0.0-next.1",
+      "nodes": [
+        "node_modules/@nestjs/core"
+      ],
+      "fixAvailable": {
+        "name": "@nestjs/core",
+        "version": "8.4.7",
+        "isSemVerMajor": true
+      }
+    },
+    "@nestjs/platform-express": {
+      "name": "@nestjs/platform-express",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@nestjs/core",
+        "multer"
+      ],
+      "effects": [
+        "@nestjs/core",
+        "@nestjs/testing"
+      ],
+      "range": ">=8.2.4",
+      "nodes": [
+        "node_modules/@nestjs/platform-express"
+      ],
+      "fixAvailable": {
+        "name": "@nestjs/platform-express",
+        "version": "8.2.3",
+        "isSemVerMajor": true
+      }
+    },
+    "@nestjs/testing": {
+      "name": "@nestjs/testing",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@nestjs/core",
+        "@nestjs/platform-express"
+      ],
+      "effects": [],
+      "range": ">=9.0.0-next.1",
+      "nodes": [
+        "node_modules/@nestjs/testing"
+      ],
+      "fixAvailable": {
+        "name": "@nestjs/testing",
+        "version": "8.4.7",
+        "isSemVerMajor": true
+      }
+    },
+    "multer": {
+      "name": "multer",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1105262,
+          "name": "multer",
+          "dependency": "multer",
+          "title": "Multer vulnerable to Denial of Service via unhandled exception",
+          "url": "https://github.com/advisories/GHSA-g5hg-p3ph-g8qg",
+          "severity": "high",
+          "cwe": [
+            "CWE-248"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=1.4.4-lts.1 <2.0.1"
+        }
+      ],
+      "effects": [
+        "@nestjs/platform-express"
+      ],
+      "range": "1.4.4-lts.1 - 2.0.0",
+      "nodes": [
+        "node_modules/@nestjs/platform-express/node_modules/multer"
+      ],
+      "fixAvailable": {
+        "name": "@nestjs/platform-express",
+        "version": "8.2.3",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 4,
+      "critical": 0,
+      "total": 4
+    },
+    "dependencies": {
+      "prod": 212,
+      "dev": 726,
+      "optional": 30,
+      "peer": 8,
+      "peerOptional": 0,
+      "total": 937
+    }
+  }
+}
