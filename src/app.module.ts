@@ -13,6 +13,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { databaseConfigFactory } from './config/database.config';
 import { CartModule } from './cart/cart.module';
+import { ProductService } from './product/product.service';
+import { ProductController } from './product/product.controller';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -32,8 +35,9 @@ import { CartModule } from './cart/cart.module';
     }),
     AuthModule,
     CartModule,
+    ProductModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, ProductController],
   providers: [
     AppService,
     {
@@ -44,6 +48,7 @@ import { CartModule } from './cart/cart.module';
       provide: APP_PIPE,
       useClass: ValidationPipe,
     },
+    ProductService,
   ],
 })
 export class AppModule {}

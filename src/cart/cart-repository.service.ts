@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CartItem } from '../../entities/cart.entity';
+import { CartItem } from '../entities/cart.entity';
 
 @Injectable()
-export class CartRepoService {
+export class CartRepositoryService {
   constructor(
     @InjectModel(CartItem)
     private readonly cartModel: typeof CartItem,
@@ -24,8 +24,28 @@ export class CartRepoService {
     return this.cartModel.findOne({ where: { userId, productId } });
   }
 
+  async findAllCartItems(userId: number) {
+    return this.cartModel.findAll({
+      where: { userId },
+      include: ['product'],
+    });
+  }
+
+  async updateCartItemQuantity(item: CartItem, quantity: number) {
+    item.quantity = quantity;
+    return await item.save();
+  }
+
   async incrementCartItemQuantity(item: CartItem, quantity: number) {
     item.quantity += quantity;
     return await item.save();
+  }
+
+  async deleteCartItem(userId: number, productId: number) {
+    return this.cartModel.destroy({ where: { userId, productId } });
+  }
+
+  async clearCartItems(userId: number) {
+    return this.cartModel.destroy({ where: { userId } });
   }
 }

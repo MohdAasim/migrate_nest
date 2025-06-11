@@ -1,5 +1,5 @@
 import { Injectable, BadRequestException, Logger } from '@nestjs/common';
-import { UserService } from '../repository/user/user.service';
+import { UserService } from '../user/user.service';
 import { MailerService } from '../mailer/mailer.service';
 import { JwtUtilService } from '../utils/jwt.service';
 

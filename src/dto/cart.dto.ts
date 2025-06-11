@@ -18,3 +18,9 @@ export class AddToCartDto {
   @Type(() => CartItemDto)
   declare items: CartItemDto[];
 }
+
+export class UpdateCartItemDto {
+  @IsNumber({}, { message: 'Quantity must be a number' })
+  @Min(1, { message: 'Quantity must be at least 1' })
+  declare quantity: number;
+}
